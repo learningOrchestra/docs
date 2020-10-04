@@ -1,3 +1,5 @@
+![banner](./learning-orchestra-docs.png)
+
 # learningOrchestra Docs
 
 To make changes clone the repo:
