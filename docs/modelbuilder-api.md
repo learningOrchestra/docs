@@ -1,7 +1,9 @@
-# Model Builder Microservice
+# Model Builder API
+
 Model Builder microservice provides a REST API to create several model predictions using your own preprocessing code using a defined set of classifiers. 
 
 ## Create prediction model
+
 `POST CLUSTER_IP:5002/models`
 
 ```json
@@ -12,6 +14,7 @@ Model Builder microservice provides a REST API to create several model predictio
     "classificators_list": "String list of classificators to be used"
 }
 ```
+
 ### List of Classifiers
 
 * `lr`: LogisticRegression
@@ -21,6 +24,7 @@ Model Builder microservice provides a REST API to create several model predictio
 * `nb`: NaiveBayes
 
 To send a request with LogisticRegression and NaiveBayes Classifiers:
+
 ```json
 {
     "training_filename": "training filename",
@@ -56,6 +60,7 @@ This method returns string or number fields as a string list from a DataFrame.
 * `is_string`: Boolean parameter, if `True`, the method returns the string DataFrame fields, otherwise, returns the numbers DataFrame fields.
 
 #### preprocessor_code Example
+
 This example uses the [titanic challengue datasets](https://www.kaggle.com/c/titanic/overview).
 
 ```python
