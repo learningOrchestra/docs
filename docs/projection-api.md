@@ -1,7 +1,9 @@
-# Projection Microservice
-Projection microservice provides an api to make a projection from file inserted in database service, generating a new file and putting in database.
+# Projection API
 
-## Create projection from a inserted file
+`Projection API` microservice provides an API to make a projection from file inserted in database service, generating a new file and storing in database.
+
+## Create projection from an inserted file
+
 `POST CLUSTER_IP:5001/projections/<filename>`
 Post request where `filename` is the name of the file to create a projection for.
 ```json

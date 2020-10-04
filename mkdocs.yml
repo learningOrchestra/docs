@@ -1,40 +1,22 @@
-site_name: learningOrchestra
+site_name: learningOrchestra Docs
 nav:
-    - Home:
-        - Whats is?: index.md
-    - Documentation:
-        - Install: install.md
-        - Usage: usage.md
-        - learningOrchestra Package:
-            - Python Package: learning_orchestra_client_package.md
-        - Microservices REST API:
-            - Database API: "database_api.md"
-            - Projection: "projection.md"
-            - Data Type Handler: "data_type_handler.md"
-            - Histogram: "histogram.md"
-            - t-SNE: "t_sne.md"
-            - PCA: "pca.md"
-            - Model Builder: "model_builder.md"
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - API Guide: 
+    - Microservices REST APIs: 
+      - Database API: database-api.md
+      - Projection API: projection-api.md
+      - Data Type API: datatype-api.md
+      - Histogram API: histogram-api.md
+      - t-SNE API: t-sne-api.md
+      - PCA API: pca-api.md
+      - Model builder API: modelbuilder-api.md
+    - python-client APIs: python-apis.md
 theme:
-    name: 'material'
-    features:
-        - instant
-        - search.highlight
-    plugins:
-        - search
-    markdown_extensions:
-        - pymdownx.emoji:
-            emoji_index: !!python/name:materialx.emoji.twemoji
-            emoji_generator: !!python/name:materialx.emoji.to_svg
-
-markdown_extensions:
-    - pymdownx.highlight
-    - pymdownx.superfences
-    - pymdownx.tabbed
-
-repo_url: https://github.com/learningOrchestra/learningOrchestra
-
-extra:
-    social:
-      - icon: fontawesome/solid/paper-plane
-        link: mailto:<gabbriel.rribeiro@gmail.com>
+  name: readthedocs
+  features:
+    - instant
+    - search.highlight
+  plugins:
+    - search
