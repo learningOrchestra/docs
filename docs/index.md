@@ -15,4 +15,4 @@ With learningOrchestra, you can:
 * create highly customised model predictions against a specific dataset by providing their own pre-processing code.
 * build prediction models with different classifiers simultaneously using a spark cluster transparently.
 
-And so much more! Check the [Usage]() section for more.
+And so much more! Check the [Usage](https://learningorchestra.github.io/docs/usage/) section for more.
