@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Linux hosts
+* Debian Linux OS hosts
 * [Docker Engine](https://docs.docker.com/engine/install/) must be installed in all instances of your cluster
 * Cluster configured in swarm mode, check [creating a swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
 * [Docker Compose](https://docs.docker.com/compose/install/) must be installed in the manager instance of your cluster
