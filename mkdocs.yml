@@ -3,16 +3,17 @@ nav:
   - Home: index.md
   - Installation: installation.md
   - Usage: usage.md
-  - API Guide: 
-    - Microservices REST APIs: 
-      - Database API: database-api.md
-      - Projection API: projection-api.md
-      - Data Type API: datatype-api.md
-      - Histogram API: histogram-api.md
-      - t-SNE API: t-sne-api.md
-      - PCA API: pca-api.md
-      - Model builder API: modelbuilder-api.md
-    - python-client APIs: python-apis.md
+  - API v1 Guide:
+      - Dataset: database-api.md
+      - Transform:
+        - Projection: projection-api.md
+        - Data Type: datatype-api.md
+      - Explore:
+        - Histogram: histogram-api.md
+        - t-SNE: t-sne-api.md
+        - PCA: pca-api.md
+      - Builder: modelbuilder-api.md
+  - Python Client: python-apis.md
 theme:
   name: readthedocs
   features:

@@ -2,7 +2,9 @@
 
 ## Requirements
 
-* Debian Linux OS hosts
+* Debian Linux hosts
+* 120 GB of disk in each cluster machine (can increase relying on dataset size)
+* 8 GB of RAM in each cluster machine (can increase relying on dataset size)
 * [Docker Engine](https://docs.docker.com/engine/install/) must be installed in all instances of your cluster
 * Cluster configured in swarm mode, check [creating a swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/)
 * [Docker Compose](https://docs.docker.com/compose/install/) must be installed in the manager instance of your cluster
@@ -32,7 +34,7 @@ That's it! learningOrchestra has been deployed in your swarm cluster!
 
 ## Cluster State
 
-`CLUSTER_IP:80` - To visualize cluster state (deployed microservices and cluster's machines).
+`CLUSTER_IP:8000` - To visualize cluster state (deployed microservices and cluster's machines).
 `CLUSTER_IP:8080` - To visualize spark cluster state.
 
-*\** `CLUSTER_IP` *is the external IP of a machine in your cluster.*
+* `CLUSTER_IP` *is the external IP of a machine in your cluster.*

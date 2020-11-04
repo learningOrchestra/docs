@@ -1,17 +1,17 @@
-# Model Builder API
+# /api/learningOrchestra/v1/builder
 
-Model Builder microservice provides a REST API to create several model predictions using your own preprocessing code using a defined set of classifiers. 
+The `builder` resource join several steps of machine learning workflow (transform, tune, train and evaluate) acoupling in a unique resouce, `builder` creates several model predictions using your own modeling code using a defined set of classifiers. 
 
-## Create prediction model
+## Create a builder
 
-`POST CLUSTER_IP:5002/models`
+`POST CLUSTER_IP/api/learningOrchestra/v1/builder`
 
 ```json
 {
-    "training_filename": "training filename",
-    "test_filename": "test filename",
-    "preprocessor_code": "Python3 code to preprocessing, using Pyspark library",
-    "classificators_list": "String list of classificators to be used"
+    "train_filename": "train_filename",
+    "test_filename": "test_filename",
+    "modeling_code": "Python3 code to preprocessing, using Pyspark library",
+    "classifiers_list": "String list of classifiers to be used"
 }
 ```
 
@@ -27,21 +27,21 @@ To send a request with LogisticRegression and NaiveBayes Classifiers:
 
 ```json
 {
-    "training_filename": "training filename",
-    "test_filename": "test filename",
-    "preprocessor_code": "Python3 code to preprocessing, using Pyspark library",
-    "classificators_list": ["lr", "nb"]
+    "train_filename": "train_filename",
+    "test_filename": "test_filename",
+    "modeling_code": "Python3 code to preprocessing, using Pyspark library",
+    "classifiers_list": ["lr", "nb"]
 }
 ```
 
-### preprocessor_code environment
+### modeling_code environment
 
-The python 3 preprocessing code must use the environment instances in bellow:
+The python 3 modeling code must use the environment instances in bellow:
 
 * `training_df` (Instantiated): Spark Dataframe instance training filename
 * `testing_df`  (Instantiated): Spark Dataframe instance testing filename
 
-The preprocessing code must instantiate the variables in below, all instances must be transformed by pyspark VectorAssembler:
+The modeling code must instantiate the variables in below, all instances must be transformed by pyspark VectorAssembler:
 
 * `features_training` (Not Instantiated): Spark Dataframe instance for train the model
 * `features_evaluation` (Not Instantiated): Spark Dataframe instance for evaluating trained model accuracy
@@ -59,7 +59,7 @@ This method returns string or number fields as a string list from a DataFrame.
 * `dataframe`: DataFrame instance
 * `is_string`: Boolean parameter, if `True`, the method returns the string DataFrame fields, otherwise, returns the numbers DataFrame fields.
 
-#### preprocessor_code Example
+#### modeling_code Example
 
 This example uses the [titanic challengue datasets](https://www.kaggle.com/c/titanic/overview).
 
@@ -162,3 +162,49 @@ features_training = assembler.transform(training_df)
     features_training.randomSplit([0.8, 0.2], seed=33)
 features_testing = assembler.transform(testing_df)
 ```
+
+## List builder dataset content
+
+`GET CLUSTER_IP/api/learningOrchestra/v1/builder/<filename>?skip=number&limit=number&query={}`
+
+Returns rows of the dataset requested, with pagination.
+
+* `filename` - Name of file requests
+* `skip` - Amount of lines to skip in the CSV file
+* `limit` - Limit the query result, maximum limit set to 20 rows
+* `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
+
+The first row in the query is always the metadata file.
+
+
+## List all builder datasets metadata
+
+`GET CLUSTER_IP/api/learningOrchestra/v1/builder`
+
+Returns an array of builder datasets metadata, where each dataset contains a metadata file.
+
+### Builder datasets metadata
+
+```json
+{
+    "classifier": "nb",
+    "filename": "titanic_test_nb",
+    "finished": true,
+    "parent_filename": ["titanic_train", "titanic_test"],
+    "time_created": "2020-11-04T10:51:43-00:00",
+    "type": "builder"
+}
+```
+
+* `classifier` - The classifier used to make the predictions
+* `parent_filename` - The train and test `filenames` used to make the builder dataset, from which the current dataset is derived.
+* `filename` - Name of the file
+* `finished` - Flag used to indicate if asynchronous processing from file downloader is finished
+* `type` - The type of file
+* `time_created` - Time of creation
+
+## Delete a builder dataset
+
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/builder/<filename>`
+
+Request of type `DELETE`, passing the `filename` field of a builder dataset in the request parameters, deleting the dataset.

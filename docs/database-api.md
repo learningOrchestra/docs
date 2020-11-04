@@ -1,27 +1,42 @@
-# Database API 
+# /api/learningOrchestra/v1/dataset
 
-The **Database API** microservice creates a level of abstraction through a REST API. 
+The **dataset** resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file.
 
-Using MongoDB, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file POST request.
+## Downloads dataset from URL
 
-## GUI tool to handle database files
+`POST CLUSTER_IP/api/learningOrchestra/v1/dataset`
 
-There are GUI tools to handle database files, like [NoSQLBooster](https://nosqlbooster.com) can interact with mongoDB used in database, and makes several tasks which are limited in `learning-orchestra-client` package, as schema visualization and files extraction and download to formats as CSV and JSON. 
+Insert a CSV into the database using the POST method, JSON must be contained in the body of the HTTP request.
+The following fields are required: 
 
-You also can navigate in all inserted files in easy way and visualize each row from determined file, to use this tool connect with the url `cluster\_ip:27017` and use the credentials:
-
+```json
+{
+    "filename": "key_to_dataset_identification",
+    "url": "http://sitetojson.file/path/to/csv"
+}
 ```
-username = root
-password = owl45#21
-```
 
-## List all inserted files
+## List dataset content
 
-`GET CLUSTER_IP:5000/files`
+`GET CLUSTER_IP/api/learningOrchestra/v1/dataset/<filename>?skip=number&limit=number&query={}`
 
-Returns an array of metadata files from the database, where each file contains a metadata file.
+Returns rows of the dataset requested, with pagination.
 
-### Downloaded files Metadata
+* `filename` - Name of file requests
+* `skip` - Amount of lines to skip in the CSV file
+* `limit` - Limit the query result, maximum limit set to 20 rows
+* `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
+
+The first row in the query is always the metadata file.
+
+
+## List all datasets metadata
+
+`GET CLUSTER_IP/api/learningOrchestra/v1/dataset`
+
+Returns an array of datasets metadata, where each dataset contains a metadata file.
+
+### Datasets metadata
 
 ```json
 {
@@ -41,6 +56,7 @@ Returns an array of metadata files from the database, where each file contains a
     ],
     "filename": "titanic_training",
     "finished": true,
+    "type": "dataset",
     "time_created": "2020-07-28T22:16:10-00:00",
     "url": "https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo"
 }
@@ -49,80 +65,12 @@ Returns an array of metadata files from the database, where each file contains a
 * `fields` - Names of the columns in the file
 * `filename` - Name of the file
 * `finished` - Flag used to indicate if asynchronous processing from file downloader is finished
+* `type` - The type of file
 * `time_created` - Time of creation
 * `url` - URL used to download the file
 
-### Preprocessed files metadata
+## Delete a dataset
 
-```json
-{
-    "fields": [
-        "PassengerId",
-        "Survived",
-        "Pclass",
-        "Name",
-        "Sex",
-        "Age",
-        "SibSp",
-        "Parch",
-        "Embarked"
-    ],
-    "filename": "titanic_training_projection",
-    "finished": false,
-    "parent_filename": "titanic_training",
-    "time_created": "2020-07-28T12:01:44-00:00"
-}
-```
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/<filename>`
 
-* `parent_filename` - The `filename` used to make a preprocess task, from which the current file is derived.
-
-### Classifier prediction files metadata
-
-```json
-{
-    "F1": "0.7030995388400528",
-    "accuracy": "0.7034883720930233",
-    "classificator": "nb",
-    "filename": "titanic_testing_new_prediction_nb",
-    "fit_time": 41.870062828063965
-}
-```
-
-* `F1` - F1 Score from model accuracy
-* `accuracy` - Accuracy from model prediction
-* `classificator` - Initials from used classificator
-* `filename` - Name of the file 
-* `fit_time` - Time taken for the model to be fit during training
-
-## List file content
-
-`GET CLUSTER_IP:5000/files/<filename>?skip=number&limit=number&query={}`
-
-Returns rows of the file requested, with pagination.
-
-* `filename` - Name of file requests
-* `skip` - Amount of lines to skip in the CSV file
-* `limit` - Limit the query result, maximum limit set to 20 rows
-* `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
-
-The first row in the query is always the metadata file.
-
-## Post file
-
-`POST CLUSTER_IP:5000/files`
-
-Insert a CSV into the database using the POST method, JSON must be contained in the body of the HTTP request.
-The following fields are required: 
-
-```json
-{
-    "filename": "key_to_document_identification",
-    "url": "http://sitetojson.file/path/to/csv"
-}
-```
-
-## Delete an existing file
-
-`DELETE CLUSTER_IP:5000/files/<filename>`
-
-Request of type `DELETE`, passing the `filename` field of an existing file in the request parameters, deleting the file in the database.
+Request of type `DELETE`, passing the `filename` field of an existing dataset in the request parameters, deleting the dataset in the database.
