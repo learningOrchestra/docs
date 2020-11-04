@@ -58,38 +58,50 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Usage</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#microservices-rest-apis">Microservices REST APIs</a>
+    <li class="toctree-l2"><a class="reference internal" href="#rest-api">REST API</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#transform">Transform</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#explore">Explore</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#builder">Builder</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#spark-microservices">Spark Microservices</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#database-gui">Database GUI</a>
-    </li>
     </ul>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -125,25 +137,25 @@
             <div class="section">
               
                 <h1 id="usage">Usage</h1>
-<p>learningOrchestra can be used with the <a href="#microservices-rest-apis">Microservices REST API</a> or with the <code>learning-orchestra-client</code> <a href="https://pypi.org/project/learning-orchestra-client/">Python package</a>.</p>
-<h2 id="microservices-rest-apis">Microservices REST APIs</h2>
-<p><a href="https://learningorchestra.github.io/docs/database-api/">Database API</a>- Download and handle datasets in a database.</p>
-<p><a href="https://learningorchestra.github.io/docs/projection-api/">Projection API</a>- Make projections of stored datasets using Spark cluster.</p>
-<p><a href="https://learningorchestra.github.io/docs/datatype-api/">Data type API</a>- Change dataset fields type between number and text.</p>
-<p><a href="https://learningorchestra.github.io/docs/histogram-api/">Histogram API</a>- Make histograms of stored datasets.</p>
-<p><a href="https://learningorchestra.github.io/docs/t-sne-api/">t-SNE API</a>- Make a t-SNE image plot of stored datasets.</p>
-<p><a href="https://learningorchestra.github.io/docs/pca-api/">PCA API</a>- Make a PCA image plot of stored datasets.</p>
-<p><a href="https://learningorchestra.github.io/docs/modelbuilder-api/">Model builder API</a>- Create a prediction model from pre-processed datasets using Spark cluster.</p>
+<p>learningOrchestra can be used with the <a href="#rest-api">REST API</a> or with the <a href="https://github.com/learningOrchestra/pythonClient">python package</a>.</p>
+<h2 id="rest-api">REST API</h2>
+<h3 id="dataset">Dataset</h3>
+<p><a href="https://learningorchestra.github.io/docs/database-api/">Dataset</a>- Download and handle datasets in a database.</p>
+<h3 id="transform">Transform</h3>
+<p><a href="https://learningorchestra.github.io/docs/projection-api/">Projection</a>- Make projections of stored datasets using Spark cluster.</p>
+<p><a href="https://learningorchestra.github.io/docs/datatype-api/">Data type</a>- Change dataset fields type between number and text.</p>
+<h3 id="explore">Explore</h3>
+<p><a href="https://learningorchestra.github.io/docs/histogram-api/">Histogram</a>- Make histograms of stored datasets.</p>
+<p><a href="https://learningorchestra.github.io/docs/t-sne-api/">t-SNE</a>- Make a t-SNE image plot of stored datasets.</p>
+<p><a href="https://learningorchestra.github.io/docs/pca-api/">PCA</a>- Make a PCA image plot of stored datasets.</p>
+<h3 id="builder">Builder</h3>
+<p><a href="https://learningorchestra.github.io/docs/modelbuilder-api/">Builder</a>- Create a prediction model from pre-processed datasets using Spark cluster.</p>
 <h3 id="spark-microservices">Spark Microservices</h3>
-<p>The Projection, t-SNE, PCA and Model builder microservices uses the Spark microservice to work.</p>
-<p>By default, this microservice has only one instance. In case your data processing requires more computing power, you can scale this microservice.</p>
+<p>The Projection, t-SNE, PCA and Builder uses the Spark microservice to work.</p>
+<p>By default, this microservice has only one instance. In case your data processing requires computing power, you need scale this microservice.</p>
 <p>To do this, with learningOrchestra already deployed, run the following in the manager machine of your Docker swarm cluster:</p>
 <p><code>docker service scale microservice_sparkworker=NUMBER_OF_INSTANCES</code></p>
 <p><em>*</em> <code>NUMBER_OF_INSTANCES</code> <em>is the number of Spark microservice instances which you require. Choose it according to your cluster resources and your resource requirements.</em></p>
-<h2 id="database-gui">Database GUI</h2>
-<p>NoSQLBooster- MongoDB GUI performs several database tasks such as file visualization, queries, projections and file extraction to CSV and JSON formats. 
-It can be util to accomplish some these tasks with your processed dataset or get your prediction results.</p>
-<p>Read the <a href="https://learningorchestra.github.io/docs/database-api/">Database API docs</a> for more info on configuring this tool.</p>
               
             </div>
           </div>
@@ -151,7 +163,7 @@ It can be util to accomplish some these tasks with your processed dataset or get
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../database-api/" class="btn btn-neutral float-right" title="Database API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../database-api/" class="btn btn-neutral float-right" title="Dataset">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>

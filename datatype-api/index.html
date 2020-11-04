@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Data Type API - learningOrchestra Docs</title>
+  <title>Data Type - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Data Type API";
+    var mkdocs_page_name = "Data Type";
     var mkdocs_page_input_path = "datatype-api.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,31 +59,37 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Transform</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Data Type API</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Data Type</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#change-field-types-of-inserted-file">Change field types of inserted file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#change-field-types-of-a-dataset">Change field types of a dataset</a>
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -107,15 +113,15 @@
     
       
         
-          <li>Microservices REST APIs &raquo;</li>
+          <li>Transform &raquo;</li>
         
       
         
-          <li>API Guide &raquo;</li>
+          <li>API v1 Guide &raquo;</li>
         
       
     
-    <li>Data Type API</li>
+    <li>Data Type</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -126,14 +132,17 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="data-type-api">Data Type API</h1>
-<p>This microservice changes data type from stored file between <code>number</code> and <code>string</code>.</p>
-<h2 id="change-field-types-of-inserted-file">Change field types of inserted file</h2>
-<p><code>PATCH CLUSTER_IP:5003/fieldtypes/&lt;filename&gt;</code></p>
-<p>The request uses <code>filename</code> as the id in the parameters and fields in the body, <code>fields</code> is an array with all fields from file to be changed, using <code>number</code> or string descriptor in each <code>Key:Value</code> to describe the new value of altered field of file.</p>
-<pre><code class="json">{
-    &quot;field1&quot;: &quot;number&quot;,
-    &quot;field2&quot;: &quot;string&quot;
+                <h1 id="apilearningorchestrav1transformdatatype">/api/learningOrchestra/v1/transform/dataType</h1>
+<p>The <code>dataType</code> resource changes the fields data type from stored datasets between <code>number</code> and <code>string</code>.</p>
+<h2 id="change-field-types-of-a-dataset">Change field types of a dataset</h2>
+<p><code>PATCH CLUSTER_IP/api/learningOrchestra/v1/transform/dataType</code></p>
+<p>The request uses <code>input_filename</code> as the dataset filename to change the field types, and the <code>types</code> uses a <code>number</code> or <code>string</code> descriptor in each <code>Key:Value</code> to describe the new value of altered field in dataset.</p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;dataset_filename&quot;,
+    &quot;types&quot;: {
+        &quot;field1&quot;: &quot;number&quot;,
+        &quot;field2&quot;: &quot;string&quot;
+    }
 }
 </code></pre>
               
@@ -143,10 +152,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../histogram-api/" class="btn btn-neutral float-right" title="Histogram API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../histogram-api/" class="btn btn-neutral float-right" title="Histogram">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../projection-api/" class="btn btn-neutral" title="Projection API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../projection-api/" class="btn btn-neutral" title="Projection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Database API - learningOrchestra Docs</title>
+  <title>Dataset - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Database API";
+    var mkdocs_page_name = "Dataset";
     var mkdocs_page_input_path = "database-api.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,47 +59,47 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Dataset</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Database API</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#gui-tool-to-handle-database-files">GUI tool to handle database files</a>
+    <li class="toctree-l2"><a class="reference internal" href="#downloads-dataset-from-url">Downloads dataset from URL</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#list-all-inserted-files">List all inserted files</a>
+    <li class="toctree-l2"><a class="reference internal" href="#list-dataset-content">List dataset content</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#list-all-datasets-metadata">List all datasets metadata</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#downloaded-files-metadata">Downloaded files Metadata</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#preprocessed-files-metadata">Preprocessed files metadata</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#classifier-prediction-files-metadata">Classifier prediction files metadata</a>
+    <li class="toctree-l3"><a class="reference internal" href="#datasets-metadata">Datasets metadata</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#list-file-content">List file content</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#post-file">Post file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete-an-existing-file">Delete an existing file</a>
+    <li class="toctree-l2"><a class="reference internal" href="#delete-a-dataset">Delete a dataset</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -123,15 +123,11 @@
     
       
         
-          <li>Microservices REST APIs &raquo;</li>
-        
-      
-        
-          <li>API Guide &raquo;</li>
+          <li>API v1 Guide &raquo;</li>
         
       
     
-    <li>Database API</li>
+    <li>Dataset</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -142,21 +138,32 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="database-api">Database API</h1>
-<p>The <strong>Database API</strong> microservice creates a level of abstraction through a REST API. </p>
-<p>Using MongoDB, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file POST request.</p>
-<h2 id="gui-tool-to-handle-database-files">GUI tool to handle database files</h2>
-<p>There are GUI tools to handle database files, like <a href="https://nosqlbooster.com">NoSQLBooster</a> can interact with mongoDB used in database, and makes several tasks which are limited in <code>learning-orchestra-client</code> package, as schema visualization and files extraction and download to formats as CSV and JSON. </p>
-<p>You also can navigate in all inserted files in easy way and visualize each row from determined file, to use this tool connect with the url <code>cluster\_ip:27017</code> and use the credentials:</p>
-<pre><code>username = root
-password = owl45#21
+                <h1 id="apilearningorchestrav1dataset">/api/learningOrchestra/v1/dataset</h1>
+<p>The <strong>dataset</strong> resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file.</p>
+<h2 id="downloads-dataset-from-url">Downloads dataset from URL</h2>
+<p><code>POST CLUSTER_IP/api/learningOrchestra/v1/dataset</code></p>
+<p>Insert a CSV into the database using the POST method, JSON must be contained in the body of the HTTP request.
+The following fields are required: </p>
+<pre><code class="language-json">{
+    &quot;filename&quot;: &quot;key_to_dataset_identification&quot;,
+    &quot;url&quot;: &quot;http://sitetojson.file/path/to/csv&quot;
+}
 </code></pre>
-
-<h2 id="list-all-inserted-files">List all inserted files</h2>
-<p><code>GET CLUSTER_IP:5000/files</code></p>
-<p>Returns an array of metadata files from the database, where each file contains a metadata file.</p>
-<h3 id="downloaded-files-metadata">Downloaded files Metadata</h3>
-<pre><code class="json">{
+<h2 id="list-dataset-content">List dataset content</h2>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
+<p>Returns rows of the dataset requested, with pagination.</p>
+<ul>
+<li><code>filename</code> - Name of file requests</li>
+<li><code>skip</code> - Amount of lines to skip in the CSV file</li>
+<li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
+<li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
+</ul>
+<p>The first row in the query is always the metadata file.</p>
+<h2 id="list-all-datasets-metadata">List all datasets metadata</h2>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/dataset</code></p>
+<p>Returns an array of datasets metadata, where each dataset contains a metadata file.</p>
+<h3 id="datasets-metadata">Datasets metadata</h3>
+<pre><code class="language-json">{
     &quot;fields&quot;: [
         &quot;PassengerId&quot;,
         &quot;Survived&quot;,
@@ -173,81 +180,22 @@ password = owl45#21
     ],
     &quot;filename&quot;: &quot;titanic_training&quot;,
     &quot;finished&quot;: true,
+    &quot;type&quot;: &quot;dataset&quot;,
     &quot;time_created&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
     &quot;url&quot;: &quot;https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo&quot;
 }
 </code></pre>
-
 <ul>
 <li><code>fields</code> - Names of the columns in the file</li>
 <li><code>filename</code> - Name of the file</li>
 <li><code>finished</code> - Flag used to indicate if asynchronous processing from file downloader is finished</li>
+<li><code>type</code> - The type of file</li>
 <li><code>time_created</code> - Time of creation</li>
 <li><code>url</code> - URL used to download the file</li>
 </ul>
-<h3 id="preprocessed-files-metadata">Preprocessed files metadata</h3>
-<pre><code class="json">{
-    &quot;fields&quot;: [
-        &quot;PassengerId&quot;,
-        &quot;Survived&quot;,
-        &quot;Pclass&quot;,
-        &quot;Name&quot;,
-        &quot;Sex&quot;,
-        &quot;Age&quot;,
-        &quot;SibSp&quot;,
-        &quot;Parch&quot;,
-        &quot;Embarked&quot;
-    ],
-    &quot;filename&quot;: &quot;titanic_training_projection&quot;,
-    &quot;finished&quot;: false,
-    &quot;parent_filename&quot;: &quot;titanic_training&quot;,
-    &quot;time_created&quot;: &quot;2020-07-28T12:01:44-00:00&quot;
-}
-</code></pre>
-
-<ul>
-<li><code>parent_filename</code> - The <code>filename</code> used to make a preprocess task, from which the current file is derived.</li>
-</ul>
-<h3 id="classifier-prediction-files-metadata">Classifier prediction files metadata</h3>
-<pre><code class="json">{
-    &quot;F1&quot;: &quot;0.7030995388400528&quot;,
-    &quot;accuracy&quot;: &quot;0.7034883720930233&quot;,
-    &quot;classificator&quot;: &quot;nb&quot;,
-    &quot;filename&quot;: &quot;titanic_testing_new_prediction_nb&quot;,
-    &quot;fit_time&quot;: 41.870062828063965
-}
-</code></pre>
-
-<ul>
-<li><code>F1</code> - F1 Score from model accuracy</li>
-<li><code>accuracy</code> - Accuracy from model prediction</li>
-<li><code>classificator</code> - Initials from used classificator</li>
-<li><code>filename</code> - Name of the file </li>
-<li><code>fit_time</code> - Time taken for the model to be fit during training</li>
-</ul>
-<h2 id="list-file-content">List file content</h2>
-<p><code>GET CLUSTER_IP:5000/files/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
-<p>Returns rows of the file requested, with pagination.</p>
-<ul>
-<li><code>filename</code> - Name of file requests</li>
-<li><code>skip</code> - Amount of lines to skip in the CSV file</li>
-<li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
-<li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
-</ul>
-<p>The first row in the query is always the metadata file.</p>
-<h2 id="post-file">Post file</h2>
-<p><code>POST CLUSTER_IP:5000/files</code></p>
-<p>Insert a CSV into the database using the POST method, JSON must be contained in the body of the HTTP request.
-The following fields are required: </p>
-<pre><code class="json">{
-    &quot;filename&quot;: &quot;key_to_document_identification&quot;,
-    &quot;url&quot;: &quot;http://sitetojson.file/path/to/csv&quot;
-}
-</code></pre>
-
-<h2 id="delete-an-existing-file">Delete an existing file</h2>
-<p><code>DELETE CLUSTER_IP:5000/files/&lt;filename&gt;</code></p>
-<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an existing file in the request parameters, deleting the file in the database.</p>
+<h2 id="delete-a-dataset">Delete a dataset</h2>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;filename&gt;</code></p>
+<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an existing dataset in the request parameters, deleting the dataset in the database.</p>
               
             </div>
           </div>
@@ -255,7 +203,7 @@ The following fields are required: </p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../projection-api/" class="btn btn-neutral float-right" title="Projection API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../projection-api/" class="btn btn-neutral float-right" title="Projection">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../usage/" class="btn btn-neutral" title="Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>

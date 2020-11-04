@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>python-client APIs - learningOrchestra Docs</title>
+  <title>Python Client - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "python-client APIs";
+    var mkdocs_page_name = "Python Client";
     var mkdocs_page_input_path = "python-apis.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,94 +59,34 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="#">Microservices REST APIs</a>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Python Client</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#database-api">Database API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#read_resume_files">read_resume_files</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read_file">read_file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#create_file">create_file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete_file">delete_file</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#projection-api">Projection API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create_projection">create_projection</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#data-type-handler-api">Data type handler API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#change_file_type">change_file_type</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#histogram-api">Histogram API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create_histogram">create_histogram</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#t-sne-api">t-SNE API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create_image_plot">create_image_plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read_image_plot_filenames">read_image_plot_filenames</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read_image_plot">read_image_plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete_image_plot">delete_image_plot</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pca-api">PCA API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create_image_plot_1">create_image_plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read_image_plot_filenames_1">read_image_plot_filenames</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read_image_plot_1">read_image_plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete_image_plot_1">delete_image_plot</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#model-builder-api">Model builder API</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#create_model">create_model</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#model_classificator">model_classificator</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#preprocessor_code-environment">preprocessor_code environment</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
     </ul>
                     </li>
                 </ul>
@@ -170,12 +110,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>API Guide &raquo;</li>
-        
-      
     
-    <li>python-client APIs</li>
+    <li>Python Client</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -186,211 +122,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="python-client-apis">python-client APIs</h1>
-<h2 id="database-api">Database API</h2>
-<h3 id="read_resume_files">read_resume_files</h3>
-<pre><code class="python">read_resume_files(pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)
-(default <code>True</code>, if <code>False</code>, return dict)</li>
-</ul>
-<h3 id="read_file">read_file</h3>
-<pre><code class="python">read_file(filename, skip=0, limit=10, query={}, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code> : name of file</li>
-<li><code>skip</code>: number of rows  to skip in pagination(default: <code>0</code>)</li>
-<li><code>limit</code>: number of rows to return in pagination(default: <code>10</code>)
-(maximum is set at <code>20</code> rows per request)</li>
-<li><code>query</code>: query to make in MongoDB(default: <code>empty query</code>)</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="create_file">create_file</h3>
-<pre><code class="python">create_file(filename, url, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code>: name of file to be created</li>
-<li><code>url</code>: url to CSV file</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="delete_file">delete_file</h3>
-<pre><code class="python">delete_file(filename, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code>: name of the file to be deleted</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="projection-api">Projection API</h2>
-<h3 id="create_projection">create_projection</h3>
-<pre><code class="python">create_projection(filename, projection_filename, fields, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code>: name of the file to make projection</li>
-<li><code>projection_filename</code>: name of file used to create projection</li>
-<li><code>fields</code>: list with fields to make projection </li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="data-type-handler-api">Data type handler API</h2>
-<h3 id="change_file_type">change_file_type</h3>
-<pre><code class="python">change_file_type(filename, fields_dict, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code>: name of file</li>
-<li><code>fields_dict</code>: dictionary with <code>field</code>:<code>number</code> or <code>field</code>:<code>string</code> keys  </li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="histogram-api">Histogram API</h2>
-<h3 id="create_histogram">create_histogram</h3>
-<pre><code class="python">create_histogram(filename, histogram_filename, fields, 
-                 pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>filename</code>: name of file to make histogram</li>
-<li><code>histogram_filename</code>: name of file used to create histogram</li>
-<li><code>fields</code>: list with fields to make histogram </li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="t-sne-api">t-SNE API</h2>
-<h3 id="create_image_plot">create_image_plot</h3>
-<pre><code class="python">create_image_plot(tsne_filename, parent_filename,
-                  label_name=None, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>parent_filename</code>: name of file to make histogram</li>
-<li><code>tsne_filename</code>: name of file used to create image plot</li>
-<li><code>label_name</code>: label name to dataset with labeled tuples (default: <code>None</code>, to 
-datasets without labeled tuples) </li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="read_image_plot_filenames">read_image_plot_filenames</h3>
-<pre><code class="python">read_image_plot_filenames(pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="read_image_plot">read_image_plot</h3>
-<pre><code class="python">read_image_plot(tsne_filename, pretty_response=True)
-</code></pre>
-
-<ul>
-<li>tsne_filename: filename of a created image plot</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="delete_image_plot">delete_image_plot</h3>
-<pre><code class="python">delete_image_plot(tsne_filename, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>tsne_filename</code>: filename of a created image plot</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="pca-api">PCA API</h2>
-<h3 id="create_image_plot_1">create_image_plot</h3>
-<pre><code class="python">create_image_plot(tsne_filename, parent_filename,
-                  label_name=None, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>parent_filename</code>: name of file to make histogram</li>
-<li><code>pca_filename</code>: filename used to create image plot</li>
-<li><code>label_name</code>: label name to dataset with labeled tuples (default: <code>None</code>, to 
-datasets without labeled tuples) </li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="read_image_plot_filenames_1">read_image_plot_filenames</h3>
-<pre><code class="python">read_image_plot_filenames(pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="read_image_plot_1">read_image_plot</h3>
-<pre><code class="python">read_image_plot(pca_filename, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>pca_filename</code>: filename of a created image plot</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h3 id="delete_image_plot_1">delete_image_plot</h3>
-<pre><code class="python">delete_image_plot(pca_filename, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>pca_filename</code>: filename of a created image plot</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h2 id="model-builder-api">Model builder API</h2>
-<h3 id="create_model">create_model</h3>
-<pre><code class="python">create_model(training_filename, test_filename, preprocessor_code, 
-             model_classificator, pretty_response=True)
-</code></pre>
-
-<ul>
-<li><code>training_filename</code>: name of file to be used in training</li>
-<li><code>test_filename</code>: name of file to be used in test</li>
-<li><code>preprocessor_code</code>: Python3 code for pyspark preprocessing model</li>
-<li><code>model_classificator</code>: list of initial classificators to be used in model</li>
-<li><code>pretty_response</code>: returns indented <code>string</code> for visualization 
-(default: <code>True</code>, returns <code>dict</code> if <code>False</code>)</li>
-</ul>
-<h4 id="model_classificator">model_classificator</h4>
-<ul>
-<li><code>lr</code>: LogisticRegression</li>
-<li><code>dt</code>: DecisionTreeClassifier</li>
-<li><code>rf</code>: RandomForestClassifier</li>
-<li><code>gb</code>: Gradient-boosted tree classifier</li>
-<li><code>nb</code>: NaiveBayes</li>
-</ul>
-<p>to send a request with LogisticRegression and NaiveBayes Classifiers:</p>
-<pre><code class="python">create_model(training_filename, test_filename, preprocessor_code, [&quot;lr&quot;, &quot;nb&quot;])
-</code></pre>
-
-<h4 id="preprocessor_code-environment">preprocessor_code environment</h4>
-<p>The Python 3 preprocessing code must use the environment instances as below:</p>
-<ul>
-<li><code>training_df</code> (Instantiated): Spark Dataframe instance training filename</li>
-<li><code>testing_df</code>  (Instantiated): Spark Dataframe instance testing filename</li>
-</ul>
-<p>The preprocessing code must instantiate the variables as below, all instances must be transformed by pyspark VectorAssembler:</p>
-<ul>
-<li><code>features_training</code> (Not Instantiated): Spark Dataframe instance for training the model</li>
-<li><code>features_evaluation</code> (Not Instantiated): Spark Dataframe instance for evaluating trained model</li>
-<li><code>features_testing</code> (Not Instantiated): Spark Dataframe instance for testing the model</li>
-</ul>
-<p>In case you don't want to evaluate the model, set <code>features_evaluation</code> as <code>None</code>.</p>
-<h5 id="handy-methods">Handy methods</h5>
-<pre><code class="python">self.fields_from_dataframe(dataframe, is_string)
-</code></pre>
-
-<p>This method returns <code>string</code> or <code>number</code> fields as a <code>string</code> list from a DataFrame.</p>
-<ul>
-<li><code>dataframe</code>: DataFrame instance</li>
-<li><code>is_string</code>: Boolean parameter(if <code>True</code>, the method returns the string DataFrame fields, otherwise, returns the numbers DataFrame fields)</li>
-</ul>
+                <h1 id="python-client">Python Client</h1>
+<p>The Python Client is a python package to use the learningOrchestra API, you can see how use this package on <a href="https://github.com/learningOrchestra/pythonClient">package repo</a>.</p>
               
             </div>
           </div>
@@ -399,7 +132,7 @@ datasets without labeled tuples) </li>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../modelbuilder-api/" class="btn btn-neutral" title="Model builder API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../modelbuilder-api/" class="btn btn-neutral" title="Builder"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

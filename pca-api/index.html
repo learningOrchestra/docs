@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>PCA API - learningOrchestra Docs</title>
+  <title>PCA - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "PCA API";
+    var mkdocs_page_name = "PCA";
     var mkdocs_page_input_path = "pca-api.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,29 +59,33 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Explore</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">PCA API</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">PCA</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#create-an-image-plot">Create an image plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete-an-image-plot">Delete an image plot</a>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-pca-image-plot">Create a PCA image plot</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-the-filenames-of-the-created-images">Read the filenames of the created images</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-an-image-plot">Read an image plot</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-an-image-plot">Delete an image plot</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#images-plot-examples">Images plot examples</a>
     </li>
@@ -89,11 +93,13 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
-                </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -117,15 +123,15 @@
     
       
         
-          <li>Microservices REST APIs &raquo;</li>
+          <li>Explore &raquo;</li>
         
       
         
-          <li>API Guide &raquo;</li>
+          <li>API v1 Guide &raquo;</li>
         
       
     
-    <li>PCA API</li>
+    <li>PCA</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -136,36 +142,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="pca-api">PCA API</h1>
+                <h1 id="apilearningorchestrav1explorepca">/api/learningOrchestra/v1/explore/pca</h1>
 <p>PCA is used to decompose a multivariate dataset in a set of successive orthogonal components that explain a maximum amount of the variance. </p>
 <p>In <code>scikit-learn</code> (used in this microservice), PCA is implemented as a transformer object that learns components in its fit method, and can be used on new data to project it on these components.</p>
-<p>PCA centers but does not scale the input data for each feature before applying the SVD. The optional parameter <code>whiten = True</code> makes it possible to project the data onto the singular space while scaling each component to unit variance. </p>
 <p>This is often useful if the models down-stream make strong assumptions on the isotropy of the signal: this is for example the case for Support Vector Machines with the RBF kernel and the K-Means clustering algorithm, more information about this algorithm in <a href="https://scikit-learn.org/stable/modules/decomposition.html#pca">scikit-learn PCA docs</a>.</p>
-<h2 id="create-an-image-plot">Create an image plot</h2>
-<p><code>POST CLUSTER_IP:5006/images/&lt;parent_filename&gt;</code></p>
-<p>The request uses a <code>parent_filename</code> as a dataset filename, the body contains the json fields:</p>
-<pre><code class="json">{
-    &quot;pca_filename&quot;: &quot;image_plot_filename&quot;,
-    &quot;label_name&quot;: &quot;dataset_label_column&quot;
+<p>The <code>pca</code> resource uses the PCA method on a dataset, and create a plot image from result.</p>
+<h2 id="create-a-pca-image-plot">Create a PCA image plot</h2>
+<p><code>POST CLUSTER_IP/api/learningOrchestra/v1/explore/pca</code></p>
+<p>The body contains the json fields:</p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
+    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;label&quot;: &quot;dataset_label_column&quot;
 }
 </code></pre>
-
-<p>The <code>label_name</code> is the label name column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in JSON:</p>
-<pre><code class="json">{
-    &quot;pca_filename&quot;: &quot;image_plot_filename&quot;,
-    &quot;label_name&quot;: null
+<p>The <code>label</code> is the label name column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in JSON:</p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
+    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;label&quot;: null
 }
 </code></pre>
-
-<h2 id="delete-an-image-plot">Delete an image plot</h2>
-<p><code>DELETE CLUSTER_IP:5006/images/&lt;image_plot_filename&gt;</code></p>
-<p>Deletes an image plot from the database.</p>
 <h2 id="read-the-filenames-of-the-created-images">Read the filenames of the created images</h2>
-<p><code>GET CLUSTER_IP:5006/images</code></p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
 <p>Returns a list with all created image plot filenames.</p>
 <h2 id="read-an-image-plot">Read an image plot</h2>
-<p><code>GET CLUSTER_IP:5006/images/&lt;image_plot_filename&gt;</code></p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
 <p>Returns the image plot of <code>filename</code> specified.</p>
+<h2 id="delete-an-image-plot">Delete an image plot</h2>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
+<p>Deletes an image plot from the database.</p>
 <h3 id="images-plot-examples">Images plot examples</h3>
 <p>This examples use the <a href="https://www.kaggle.com/c/titanic/overview">titanic challengue datasets</a>.</p>
 <h4 id="titanic-train-dataset">Titanic Train dataset</h4>
@@ -179,10 +185,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../modelbuilder-api/" class="btn btn-neutral float-right" title="Model builder API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../modelbuilder-api/" class="btn btn-neutral float-right" title="Builder">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../t-sne-api/" class="btn btn-neutral" title="t-SNE API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../t-sne-api/" class="btn btn-neutral" title="t-SNE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

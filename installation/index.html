@@ -67,27 +67,33 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -125,7 +131,9 @@
                 <h1 id="installation">Installation</h1>
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li>Linux hosts</li>
+<li>Debian Linux hosts</li>
+<li>120 GB of disk in each cluster machine (can increase relying on dataset size)</li>
+<li>8 GB of RAM in each cluster machine (can increase relying on dataset size)</li>
 <li><a href="https://docs.docker.com/engine/install/">Docker Engine</a> must be installed in all instances of your cluster</li>
 <li>Cluster configured in swarm mode, check <a href="https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/">creating a swarm</a></li>
 <li><a href="https://docs.docker.com/compose/install/">Docker Compose</a> must be installed in the manager instance of your cluster</li>
@@ -137,17 +145,17 @@
 <p>In the manager Docker swarm machine, clone the repo using:</p>
 <pre><code>git clone https://github.com/riibeirogabriel/learningOrchestra.git
 </code></pre>
-
 <p>Navigate into the <code>learningOrchestra</code> directory and run:</p>
 <pre><code>cd learningOrchestra
 sudo ./run.sh
 </code></pre>
-
 <p>That's it! learningOrchestra has been deployed in your swarm cluster!</p>
 <h2 id="cluster-state">Cluster State</h2>
-<p><code>CLUSTER_IP:80</code> - To visualize cluster state (deployed microservices and cluster's machines).
+<p><code>CLUSTER_IP:8000</code> - To visualize cluster state (deployed microservices and cluster's machines).
 <code>CLUSTER_IP:8080</code> - To visualize spark cluster state.</p>
-<p><em>*</em> <code>CLUSTER_IP</code> <em>is the external IP of a machine in your cluster.</em></p>
+<ul>
+<li><code>CLUSTER_IP</code> <em>is the external IP of a machine in your cluster.</em></li>
+</ul>
               
             </div>
           </div>

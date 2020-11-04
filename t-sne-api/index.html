@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>t-SNE API - learningOrchestra Docs</title>
+  <title>t-SNE - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "t-SNE API";
+    var mkdocs_page_name = "t-SNE";
     var mkdocs_page_input_path = "t-sne-api.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,27 +59,31 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Transform</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Explore</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../projection-api/">Projection API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">t-SNE API</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">t-SNE</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#create-an-image-plot">Create an image plot</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#delete-an-image-plot">Delete an image plot</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-the-filenames-of-the-created-images">Read the filenames of the created images</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-an-image-plot">Read an image plot</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-an-image-plot">Delete an image plot</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#image-plot-examples">Image plot examples</a>
     </li>
@@ -87,13 +91,15 @@
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -117,15 +123,15 @@
     
       
         
-          <li>Microservices REST APIs &raquo;</li>
+          <li>Explore &raquo;</li>
         
       
         
-          <li>API Guide &raquo;</li>
+          <li>API v1 Guide &raquo;</li>
         
       
     
-    <li>t-SNE API</li>
+    <li>t-SNE</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -136,35 +142,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="t-sne-api">t-SNE API</h1>
+                <h1 id="apilearningorchestrav1exploretsne">/api/learningOrchestra/v1/explore/tsne</h1>
 <p>The T-distributed Stochastic Neighbor Embedding (t-SNE) is a machine learning algorithm for visualization. </p>
 <p>It is a nonlinear dimensionality reduction technique well-suited for embedding high-dimensional data for visualization in a low-dimensional space of two or three dimensions. </p>
 <p>Specifically, it models each high-dimensional object by a two- or three-dimensional point in such a way that similar objects are modeled by nearby points and dissimilar objects are modeled by distant points with high probability, more information about this algorithm in its <a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">Wiki page</a>.</p>
+<p>The <code>tsne</code> resource uses the t-SNE method on a dataset, and create a plot image from result.</p>
 <h2 id="create-an-image-plot">Create an image plot</h2>
-<p><code>POST CLUSTER_IP:5005/images/&lt;parent_filename&gt;</code></p>
-<p>The request uses a <code>parent_filename</code> as a dataset inserted filename, the body contains the JSON fields:</p>
-<pre><code class="json">{
-    &quot;tsne_filename&quot;: &quot;image_plot_filename&quot;,
-    &quot;label_name&quot;: &quot;dataset_label_column&quot;
+<p><code>POST CLUSTER_IP/api/learningOrchestra/v1/explore/tsne</code></p>
+<p>The body contains the json fields:</p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
+    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;label&quot;: &quot;dataset_label_column&quot;
 }
 </code></pre>
-
-<p>The <code>label_name</code> is the label name of the column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in json:</p>
-<pre><code class="json">{
-    &quot;tsne_filename&quot;: &quot;image_plot_filename&quot;,
-    &quot;label_name&quot;: null
+<p>The <code>label</code> is the label name of the column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in json:</p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
+    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;label&quot;: null
 }
 </code></pre>
-
-<h2 id="delete-an-image-plot">Delete an image plot</h2>
-<p><code>DELETE CLUSTER_IP:5005/images/&lt;image_plot_filename&gt;</code></p>
-<p>Deletes an image plot by specifying its file name.</p>
 <h2 id="read-the-filenames-of-the-created-images">Read the filenames of the created images</h2>
-<p><code>GET CLUSTER_IP:5005/images</code></p>
-<p>Returns a list with all created images plot file name.</p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/tsne</code></p>
+<p>Returns a list with all created images plot filenames.</p>
 <h2 id="read-an-image-plot">Read an image plot</h2>
-<p><code>GET CLUSTER_IP:5005/images/&lt;image_plot_filename&gt;</code></p>
-<p>Returns the image plot of the specified file name.</p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;filename&gt;</code></p>
+<p>Returns the image plot of the specified filename.</p>
+<h2 id="delete-an-image-plot">Delete an image plot</h2>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;filename&gt;</code></p>
+<p>Deletes an image plot by specifying its filename.</p>
 <h3 id="image-plot-examples">Image plot examples</h3>
 <p>These examples use the <a href="https://www.kaggle.com/c/titanic/overview">titanic challengue datasets</a>.</p>
 <h4 id="titanic-train-dataset">Titanic Train dataset</h4>
@@ -178,10 +185,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pca-api/" class="btn btn-neutral float-right" title="PCA API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../pca-api/" class="btn btn-neutral float-right" title="PCA">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../histogram-api/" class="btn btn-neutral" title="Histogram API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../histogram-api/" class="btn btn-neutral" title="Histogram"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

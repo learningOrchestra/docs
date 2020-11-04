@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Projection API - learningOrchestra Docs</title>
+  <title>Projection - learningOrchestra Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Projection API";
+    var mkdocs_page_name = "Projection";
     var mkdocs_page_input_path = "projection-api.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,31 +59,47 @@
                     <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">API Guide</span></p>
+                <p class="caption"><span class="caption-text">API v1 Guide</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices REST APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../database-api/">Dataset</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Transform</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../database-api/">Database API</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">Projection API</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Projection</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#create-projection-from-an-inserted-file">Create projection from an inserted file</a>
+    <li class="toctree-l3"><a class="reference internal" href="#create-a-projection-dataset-from-an-inserted-dataset">Create a projection dataset from an inserted dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#list-projection-dataset-content">List projection dataset content</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#list-all-projection-datasets-metadata">List all projection datasets metadata</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#projection-datasets-metadata">Projection datasets metadata</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-a-projection-dataset">Delete a projection dataset</a>
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA API</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../modelbuilder-api/">Model builder API</a>
+                <li class="toctree-l2"><a class="reference internal" href="../datatype-api/">Data Type</a>
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">python-client APIs</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Explore</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../histogram-api/">Histogram</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t-sne-api/">t-SNE</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../pca-api/">PCA</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../modelbuilder-api/">Builder</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python-apis/">Python Client</a>
                     </li>
                 </ul>
       </div>
@@ -107,15 +123,15 @@
     
       
         
-          <li>Microservices REST APIs &raquo;</li>
+          <li>Transform &raquo;</li>
         
       
         
-          <li>API Guide &raquo;</li>
+          <li>API v1 Guide &raquo;</li>
         
       
     
-    <li>Projection API</li>
+    <li>Projection</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -126,16 +142,65 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="projection-api">Projection API</h1>
-<p><code>Projection API</code> microservice provides an API to make a projection from file inserted in database service, generating a new file and storing in database.</p>
-<h2 id="create-projection-from-an-inserted-file">Create projection from an inserted file</h2>
-<p><code>POST CLUSTER_IP:5001/projections/&lt;filename&gt;</code>
-Post request where <code>filename</code> is the name of the file to create a projection for.</p>
-<pre><code class="json">{
-    &quot;projection_filename&quot; : &quot;filename_to_save_projection&quot;,
-    &quot;fields&quot; : [&quot;list&quot;, &quot;of&quot;, &quot;fields&quot;]
+                <h1 id="apilearningorchestrav1transformprojection">/api/learningOrchestra/v1/transform/projection</h1>
+<p>The <code>projection</code> resource makes a projection from dataset inserted in dataset resource, generating a new dataset, and also manages this generated dataset.</p>
+<h2 id="create-a-projection-dataset-from-an-inserted-dataset">Create a projection dataset from an inserted dataset</h2>
+<p><code>POST CLUSTER_IP:/api/learningOrchestra/v1/transform/projection</code></p>
+<pre><code class="language-json">{
+    &quot;input_filename&quot;: &quot;filename_from_dataset_to_use&quot;,
+    &quot;output_filename&quot;: &quot;filename_to_projection_dataset&quot;,
+    &quot;names&quot; : [&quot;list&quot;, &quot;of&quot;, &quot;fields&quot;]
 }
 </code></pre>
+<h2 id="list-projection-dataset-content">List projection dataset content</h2>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
+<p>Returns rows of the dataset requested, with pagination.</p>
+<ul>
+<li><code>filename</code> - Name of file requests</li>
+<li><code>skip</code> - Amount of lines to skip in the CSV file</li>
+<li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
+<li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
+</ul>
+<p>The first row in the query is always the metadata file.</p>
+<h2 id="list-all-projection-datasets-metadata">List all projection datasets metadata</h2>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection</code></p>
+<p>Returns an array of projection datasets metadata, where each dataset contains a metadata file.</p>
+<h3 id="projection-datasets-metadata">Projection datasets metadata</h3>
+<pre><code class="language-json">{
+    &quot;fields&quot;: [
+        &quot;PassengerId&quot;,
+        &quot;Survived&quot;,
+        &quot;Pclass&quot;,
+        &quot;Name&quot;,
+        &quot;Sex&quot;,
+        &quot;Age&quot;,
+        &quot;SibSp&quot;,
+        &quot;Parch&quot;,
+        &quot;Ticket&quot;,
+        &quot;Fare&quot;,
+        &quot;Cabin&quot;,
+        &quot;Embarked&quot;
+    ],
+    &quot;filename&quot;: &quot;titanic_training_projection&quot;,
+    &quot;parent_filename&quot;: &quot;titanic_training&quot;,
+    &quot;finished&quot;: true,
+    &quot;type&quot;: &quot;projection&quot;,
+    &quot;time_created&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
+    &quot;url&quot;: &quot;https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo&quot;
+}
+</code></pre>
+<ul>
+<li><code>fields</code> - Names of the columns in the file</li>
+<li><code>parent_filename</code> - The <code>filename</code> used to make the projection dataset, from which the current dataset is derived.</li>
+<li><code>filename</code> - Name of the file</li>
+<li><code>finished</code> - Flag used to indicate if asynchronous processing from file downloader is finished</li>
+<li><code>type</code> - The type of file</li>
+<li><code>time_created</code> - Time of creation</li>
+<li><code>url</code> - URL used to download the file</li>
+</ul>
+<h2 id="delete-a-projection-dataset">Delete a projection dataset</h2>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;filename&gt;</code></p>
+<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an projection dataset in the request parameters, deleting the dataset.</p>
               
             </div>
           </div>
@@ -143,10 +208,10 @@ Post request where <code>filename</code> is the name of the file to create a pro
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../datatype-api/" class="btn btn-neutral float-right" title="Data Type API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../datatype-api/" class="btn btn-neutral float-right" title="Data Type">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../database-api/" class="btn btn-neutral" title="Database API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../database-api/" class="btn btn-neutral" title="Dataset"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
