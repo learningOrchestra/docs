@@ -8,10 +8,10 @@ The `builder` resource join several steps of machine learning workflow (transfor
 
 ```json
 {
-    "train_filename": "train_filename",
-    "test_filename": "test_filename",
-    "modeling_code": "Python3 code to preprocessing, using Pyspark library",
-    "classifiers_list": "String list of classifiers to be used"
+    "trainDatasetName": "trainDataset",
+    "testDatasetName": "testDataset",
+    "modelingCode": "Python3 code to preprocessing, using Pyspark library",
+    "classifiersList": "String list of classifiers to be used"
 }
 ```
 
@@ -27,8 +27,8 @@ To send a request with LogisticRegression and NaiveBayes Classifiers:
 
 ```json
 {
-    "train_filename": "train_filename",
-    "test_filename": "test_filename",
+    "trainDatasetName": "trainDataset",
+    "testDatasetName": "testDataset",
     "modeling_code": "Python3 code to preprocessing, using Pyspark library",
     "classifiers_list": ["lr", "nb"]
 }
@@ -38,8 +38,8 @@ To send a request with LogisticRegression and NaiveBayes Classifiers:
 
 The python 3 modeling code must use the environment instances in bellow:
 
-* `training_df` (Instantiated): Spark Dataframe instance training filename
-* `testing_df`  (Instantiated): Spark Dataframe instance testing filename
+* `training_df` (Instantiated): Spark Dataframe instance of train dataset
+* `testing_df`  (Instantiated): Spark Dataframe instance of testing dataset 
 
 The modeling code must instantiate the variables in below, all instances must be transformed by pyspark VectorAssembler:
 
@@ -165,11 +165,11 @@ features_testing = assembler.transform(testing_df)
 
 ## List builder dataset content
 
-`GET CLUSTER_IP/api/learningOrchestra/v1/builder/<filename>?skip=number&limit=number&query={}`
+`GET CLUSTER_IP/api/learningOrchestra/v1/builder/<datasetName>?skip=number&limit=number&query={}`
 
 Returns rows of the dataset requested, with pagination.
 
-* `filename` - Name of file requests
+* `datasetName` - Name of file requests
 * `skip` - Amount of lines to skip in the CSV file
 * `limit` - Limit the query result, maximum limit set to 20 rows
 * `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
@@ -188,23 +188,23 @@ Returns an array of builder datasets metadata, where each dataset contains a met
 ```json
 {
     "classifier": "nb",
-    "filename": "titanic_test_nb",
+    "datasetName": "titanicTestNB",
     "finished": true,
-    "parent_filename": ["titanic_train", "titanic_test"],
-    "time_created": "2020-11-04T10:51:43-00:00",
+    "parentDatasetName": ["titanicTrain", "titanicTest"],
+    "timeCreated": "2020-11-04T10:51:43-00:00",
     "type": "builder"
 }
 ```
 
 * `classifier` - The classifier used to make the predictions
-* `parent_filename` - The train and test `filenames` used to make the builder dataset, from which the current dataset is derived.
-* `filename` - Name of the file
+* `parentDatasetName` - The train and test dataset names used to make the builder dataset, from which the current dataset is derived.
+* `datasetName` - Name of the file
 * `finished` - Flag used to indicate if asynchronous processing from file downloader is finished
 * `type` - The type of file
-* `time_created` - Time of creation
+* `timeCreated` - Time of creation
 
 ## Delete a builder dataset
 
-`DELETE CLUSTER_IP/api/learningOrchestra/v1/builder/<filename>`
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/builder/<datasetName>`
 
-Request of type `DELETE`, passing the `filename` field of a builder dataset in the request parameters, deleting the dataset.
+Request of type `DELETE`, passing the `datasetName` field of a builder dataset in the request parameters, deleting the dataset.

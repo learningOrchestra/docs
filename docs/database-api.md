@@ -1,6 +1,6 @@
 # /api/learningOrchestra/v1/dataset
 
-The **dataset** resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file.
+The **dataset** resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the datasetName field contained in the JSON file.
 
 ## Downloads dataset from URL
 
@@ -11,18 +11,18 @@ The following fields are required:
 
 ```json
 {
-    "filename": "key_to_dataset_identification",
+    "datasetName": "key to dataset identification",
     "url": "http://sitetojson.file/path/to/csv"
 }
 ```
 
 ## List dataset content
 
-`GET CLUSTER_IP/api/learningOrchestra/v1/dataset/<filename>?skip=number&limit=number&query={}`
+`GET CLUSTER_IP/api/learningOrchestra/v1/dataset/<datasetName>?skip=number&limit=number&query={}`
 
 Returns rows of the dataset requested, with pagination.
 
-* `filename` - Name of file requests
+* `datasetName` - Name of file requests
 * `skip` - Amount of lines to skip in the CSV file
 * `limit` - Limit the query result, maximum limit set to 20 rows
 * `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
@@ -54,23 +54,23 @@ Returns an array of datasets metadata, where each dataset contains a metadata fi
         "Cabin",
         "Embarked"
     ],
-    "filename": "titanic_training",
+    "datasetName": "titanicTraining",
     "finished": true,
     "type": "dataset",
-    "time_created": "2020-07-28T22:16:10-00:00",
+    "timeCreated": "2020-07-28T22:16:10-00:00",
     "url": "https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo"
 }
 ```
 
 * `fields` - Names of the columns in the file
-* `filename` - Name of the file
+* `datasetName` - Name of the file
 * `finished` - Flag used to indicate if asynchronous processing from file downloader is finished
 * `type` - The type of file
-* `time_created` - Time of creation
+* `timeCreated` - Time of creation
 * `url` - URL used to download the file
 
 ## Delete a dataset
 
-`DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/<filename>`
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/<datasetName>`
 
-Request of type `DELETE`, passing the `filename` field of an existing dataset in the request parameters, deleting the dataset in the database.
+Request of type `DELETE`, passing the `datasetName` field of an existing dataset in the request parameters, deleting the dataset in the database.

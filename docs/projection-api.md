@@ -8,19 +8,19 @@ The `projection` resource makes a projection from dataset inserted in dataset re
 
 ```json
 {
-    "input_filename": "filename_from_dataset_to_use",
-    "output_filename": "filename_to_projection_dataset",
+    "inputDatasetName": "name of dataset to use",
+    "outputDatasetName": "name of projection dataset",
     "names" : ["list", "of", "fields"]
 }
 ```
 
 ## List projection dataset content
 
-`GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection/<filename>?skip=number&limit=number&query={}`
+`GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection/<datasetName>?skip=number&limit=number&query={}`
 
 Returns rows of the dataset requested, with pagination.
 
-* `filename` - Name of file requests
+* `datasetName` - Name of file requests
 * `skip` - Amount of lines to skip in the CSV file
 * `limit` - Limit the query result, maximum limit set to 20 rows
 * `query` - Query to find documents, if only pagination is requested, `query` should be empty curly brackets `query={}`
@@ -52,27 +52,27 @@ Returns an array of projection datasets metadata, where each dataset contains a 
         "Cabin",
         "Embarked"
     ],
-    "filename": "titanic_training_projection",
-    "parent_filename": "titanic_training",
+    "datasetName": "titanicTrainingProjection",
+    "parentDatasetName": "titanicTraining",
     "finished": true,
     "type": "projection",
-    "time_created": "2020-07-28T22:16:10-00:00",
+    "timeCreated": "2020-07-28T22:16:10-00:00",
     "url": "https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo"
 }
 ```
 
 * `fields` - Names of the columns in the file
-* `parent_filename` - The `filename` used to make the projection dataset, from which the current dataset is derived.
-* `filename` - Name of the file
+* `parentFatasetName` - The `datasetName` used to make the projection dataset, from which the current dataset is derived.
+* `datasetName` - Name of the file
 * `finished` - Flag used to indicate if asynchronous processing from file downloader is finished
 * `type` - The type of file
-* `time_created` - Time of creation
+* `timeCreated` - Time of creation
 * `url` - URL used to download the file
 
 ## Delete a projection dataset
 
-`DELETE CLUSTER_IP/api/learningOrchestra/v1/transform/projection/<filename>`
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/transform/projection/<datasetName>`
 
-Request of type `DELETE`, passing the `filename` field of an projection dataset in the request parameters, deleting the dataset.
+Request of type `DELETE`, passing the `datasetName` field of an projection dataset in the request parameters, deleting the dataset.
 
 

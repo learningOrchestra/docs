@@ -16,9 +16,9 @@ The body contains the json fields:
 
 ```json
 {
-    "input_filename": "used_dataset_filename",
-    "output_filename": "result_image_plot_filename",
-    "label": "dataset_label_column"
+    "inputDatasetName": "used dataset name",
+    "outputPlotName": "result image plot name",
+    "label": "dataset label column"
 }
 ```
 
@@ -26,27 +26,27 @@ The `label` is the label name column for machine learning datasets which has lab
 
 ```json
 {
-    "input_filename": "used_dataset_filename",
-    "output_filename": "result_image_plot_filename",
+    "inputDatasetName": "used dataset name",
+    "outputPlotName": "result image plot name",
     "label": null
 }
 ```
 
-## Read the filenames of the created images
+## Read the plot names of the created images
 
-`GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/<filename>`
+`GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca`
 
-Returns a list with all created image plot filenames.
+Returns a list with all created image plot names.
  
 ## Read an image plot
 
-`GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/<filename>`
+`GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/<plotName>`
 
-Returns the image plot of `filename` specified.
+Returns the image plot of `plotName` specified.
 
 ## Delete an image plot
 
-`DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/pca/<filename>`
+`DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/pca/<plotName>`
 
 Deletes an image plot from the database.
 
