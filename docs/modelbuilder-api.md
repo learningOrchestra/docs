@@ -17,11 +17,11 @@ The `builder` resource join several steps of machine learning workflow (transfor
 
 ### List of Classifiers
 
-* `lr`: LogisticRegression
-* `dt`: DecisionTreeClassifier
-* `rf`: RandomForestClassifier
-* `gb`: Gradient-boosted tree classifier
-* `nb`: NaiveBayes
+* `LR`: LogisticRegression
+* `DT`: DecisionTreeClassifier
+* `RF`: RandomForestClassifier
+* `GB`: Gradient-boosted tree classifier
+* `NB`: NaiveBayes
 
 To send a request with LogisticRegression and NaiveBayes Classifiers:
 
@@ -30,7 +30,7 @@ To send a request with LogisticRegression and NaiveBayes Classifiers:
     "trainDatasetName": "trainDataset",
     "testDatasetName": "testDataset",
     "modeling_code": "Python3 code to preprocessing, using Pyspark library",
-    "classifiers_list": ["lr", "nb"]
+    "classifiers_list": ["LR", "NB"]
 }
 ```
 
@@ -187,7 +187,7 @@ Returns an array of builder datasets metadata, where each dataset contains a met
 
 ```json
 {
-    "classifier": "nb",
+    "classifier": "NB",
     "datasetName": "titanicTestNB",
     "finished": true,
     "parentDatasetName": ["titanicTrain", "titanicTest"],
