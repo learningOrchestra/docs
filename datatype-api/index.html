@@ -136,9 +136,9 @@
 <p>The <code>dataType</code> resource changes the fields data type from stored datasets between <code>number</code> and <code>string</code>.</p>
 <h2 id="change-field-types-of-a-dataset">Change field types of a dataset</h2>
 <p><code>PATCH CLUSTER_IP/api/learningOrchestra/v1/transform/dataType</code></p>
-<p>The request uses <code>input_filename</code> as the dataset filename to change the field types, and the <code>types</code> uses a <code>number</code> or <code>string</code> descriptor in each <code>Key:Value</code> to describe the new value of altered field in dataset.</p>
+<p>The request uses <code>inputDatasetName</code> as the dataset name to change the field types, and the <code>types</code> uses a <code>number</code> or <code>string</code> descriptor in each <code>Key:Value</code> to describe the new value of altered field in dataset.</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;dataset_filename&quot;,
+    &quot;inputDatasetName&quot;: &quot;SomeDatasetName&quot;,
     &quot;types&quot;: {
         &quot;field1&quot;: &quot;number&quot;,
         &quot;field2&quot;: &quot;string&quot;

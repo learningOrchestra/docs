@@ -79,7 +79,7 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#create-an-image-plot">Create an image plot</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read-the-filenames-of-the-created-images">Read the filenames of the created images</a>
+    <li class="toctree-l3"><a class="reference internal" href="#read-the-names-of-the-created-plots">Read the names of the created plots</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-an-image-plot">Read an image plot</a>
     </li>
@@ -151,27 +151,27 @@
 <p><code>POST CLUSTER_IP/api/learningOrchestra/v1/explore/tsne</code></p>
 <p>The body contains the json fields:</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
-    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
-    &quot;label&quot;: &quot;dataset_label_column&quot;
+    &quot;inputDatasetName&quot;: &quot;used dataset name&quot;,
+    &quot;outputPlotName&quot;: &quot;result image plot name&quot;,
+    &quot;label&quot;: &quot;dataset label column&quot;
 }
 </code></pre>
 <p>The <code>label</code> is the label name of the column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in json:</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
-    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;inputDatasetName&quot;: &quot;used dataset name&quot;,
+    &quot;outputPlotName&quot;: &quot;result image plot name&quot;,
     &quot;label&quot;: null
 }
 </code></pre>
-<h2 id="read-the-filenames-of-the-created-images">Read the filenames of the created images</h2>
+<h2 id="read-the-names-of-the-created-plots">Read the names of the created plots</h2>
 <p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/tsne</code></p>
-<p>Returns a list with all created images plot filenames.</p>
+<p>Returns a list with all created images plot names.</p>
 <h2 id="read-an-image-plot">Read an image plot</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;filename&gt;</code></p>
-<p>Returns the image plot of the specified filename.</p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;plotName&gt;</code></p>
+<p>Returns the image plot of the specified plotName.</p>
 <h2 id="delete-an-image-plot">Delete an image plot</h2>
-<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;filename&gt;</code></p>
-<p>Deletes an image plot by specifying its filename.</p>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/tsne/&lt;plotName&gt;</code></p>
+<p>Deletes an image plot by specifying its plotName.</p>
 <h3 id="image-plot-examples">Image plot examples</h3>
 <p>These examples use the <a href="https://www.kaggle.com/c/titanic/overview">titanic challengue datasets</a>.</p>
 <h4 id="titanic-train-dataset">Titanic Train dataset</h4>

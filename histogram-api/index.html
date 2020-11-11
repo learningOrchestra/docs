@@ -146,18 +146,18 @@
 <p>The <code>histogram</code> resource makes a histogram from a stored file, storing the resulting histogram in a new dataset.</p>
 <h2 id="create-a-histogram-from-a-dataset">Create a histogram from a dataset</h2>
 <p><code>POST CLUSTER_IP/api/learningOrchestra/v1/explore/histogram</code></p>
-<p>The request is sent in the body, <code>input_filename</code> is the filename from used dataset and the <code>output_filename</code> is the name of the file in which the histogram result is saved. The <code>names</code> is an array with all the fields necessary to make the histogram.</p>
+<p>The request is sent in the body, <code>inputDatasetName</code> is the name from used dataset and the <code>outputDatasetName</code> is the name of the file in which the histogram result is saved. The <code>names</code> is an array with all the fields necessary to make the histogram.</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;filename_from_dataset_to_use&quot;,
-    &quot;output_filename&quot;: &quot;filename_to_histogram_dataset&quot;,
+    &quot;inputDatasetName&quot;: &quot;dataset input name to use&quot;,
+    &quot;outputDatasetName&quot;: &quot;name to histogram dataset&quot;,
     &quot;names&quot; : [&quot;list&quot;, &quot;of&quot;, &quot;fields&quot;]
 }
 </code></pre>
 <h2 id="list-histogram-dataset-content">List histogram dataset content</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/histogram/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/histogram/&lt;datasetName&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
 <p>Returns rows of the dataset requested, with pagination.</p>
 <ul>
-<li><code>filename</code> - Name of file requests</li>
+<li><code>datasetName</code> - Name of file requests</li>
 <li><code>skip</code> - Amount of lines to skip in the CSV file</li>
 <li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
 <li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
@@ -175,26 +175,26 @@
         &quot;Name&quot;,
         &quot;Sex&quot;
     ],
-    &quot;filename&quot;: &quot;titanic_training_histogram&quot;,
-    &quot;parent_filename&quot;: &quot;titanic_training&quot;,
+    &quot;datasetName&quot;: &quot;titanicTrainingHistogram&quot;,
+    &quot;parentDatasetName&quot;: &quot;titanicTraining&quot;,
     &quot;finished&quot;: true,
     &quot;type&quot;: &quot;histogram&quot;,
-    &quot;time_created&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
+    &quot;timeCreated&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
     &quot;url&quot;: &quot;https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo&quot;
 }
 </code></pre>
 <ul>
 <li><code>fields</code> - Names of the columns in the file</li>
-<li><code>parent_filename</code> - The <code>filename</code> used to make the histogram dataset, from which the current dataset is derived.</li>
-<li><code>filename</code> - Name of the file</li>
+<li><code>parentDatasetName</code> - The <code>datasetName</code> used to make the histogram dataset, from which the current dataset is derived.</li>
+<li><code>datasetName</code> - Name of the file</li>
 <li><code>finished</code> - Flag used to indicate if asynchronous processing from file downloader is finished</li>
 <li><code>type</code> - The type of file</li>
-<li><code>time_created</code> - Time of creation</li>
+<li><code>timeCreated</code> - Time of creation</li>
 <li><code>url</code> - URL used to download the file</li>
 </ul>
 <h2 id="delete-a-histogram-dataset">Delete a histogram dataset</h2>
-<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/histogram/&lt;filename&gt;</code></p>
-<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an histogram dataset in the request parameters, deleting the dataset.</p>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/histogram/&lt;datasetName&gt;</code></p>
+<p>Request of type <code>DELETE</code>, passing the <code>datasetName</code> field of an histogram dataset in the request parameters, deleting the dataset.</p>
               
             </div>
           </div>

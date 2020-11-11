@@ -147,16 +147,16 @@
 <h2 id="create-a-projection-dataset-from-an-inserted-dataset">Create a projection dataset from an inserted dataset</h2>
 <p><code>POST CLUSTER_IP:/api/learningOrchestra/v1/transform/projection</code></p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;filename_from_dataset_to_use&quot;,
-    &quot;output_filename&quot;: &quot;filename_to_projection_dataset&quot;,
+    &quot;inputDatasetName&quot;: &quot;name of dataset to use&quot;,
+    &quot;outputDatasetName&quot;: &quot;name of projection dataset&quot;,
     &quot;names&quot; : [&quot;list&quot;, &quot;of&quot;, &quot;fields&quot;]
 }
 </code></pre>
 <h2 id="list-projection-dataset-content">List projection dataset content</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;datasetName&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
 <p>Returns rows of the dataset requested, with pagination.</p>
 <ul>
-<li><code>filename</code> - Name of file requests</li>
+<li><code>datasetName</code> - Name of file requests</li>
 <li><code>skip</code> - Amount of lines to skip in the CSV file</li>
 <li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
 <li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
@@ -181,26 +181,26 @@
         &quot;Cabin&quot;,
         &quot;Embarked&quot;
     ],
-    &quot;filename&quot;: &quot;titanic_training_projection&quot;,
-    &quot;parent_filename&quot;: &quot;titanic_training&quot;,
+    &quot;datasetName&quot;: &quot;titanicTrainingProjection&quot;,
+    &quot;parentDatasetName&quot;: &quot;titanicTraining&quot;,
     &quot;finished&quot;: true,
     &quot;type&quot;: &quot;projection&quot;,
-    &quot;time_created&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
+    &quot;timeCreated&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
     &quot;url&quot;: &quot;https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo&quot;
 }
 </code></pre>
 <ul>
 <li><code>fields</code> - Names of the columns in the file</li>
-<li><code>parent_filename</code> - The <code>filename</code> used to make the projection dataset, from which the current dataset is derived.</li>
-<li><code>filename</code> - Name of the file</li>
+<li><code>parentFatasetName</code> - The <code>datasetName</code> used to make the projection dataset, from which the current dataset is derived.</li>
+<li><code>datasetName</code> - Name of the file</li>
 <li><code>finished</code> - Flag used to indicate if asynchronous processing from file downloader is finished</li>
 <li><code>type</code> - The type of file</li>
-<li><code>time_created</code> - Time of creation</li>
+<li><code>timeCreated</code> - Time of creation</li>
 <li><code>url</code> - URL used to download the file</li>
 </ul>
 <h2 id="delete-a-projection-dataset">Delete a projection dataset</h2>
-<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;filename&gt;</code></p>
-<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an projection dataset in the request parameters, deleting the dataset.</p>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/transform/projection/&lt;datasetName&gt;</code></p>
+<p>Request of type <code>DELETE</code>, passing the <code>datasetName</code> field of an projection dataset in the request parameters, deleting the dataset.</p>
               
             </div>
           </div>

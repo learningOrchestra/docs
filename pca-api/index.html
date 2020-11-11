@@ -81,7 +81,7 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#create-a-pca-image-plot">Create a PCA image plot</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#read-the-filenames-of-the-created-images">Read the filenames of the created images</a>
+    <li class="toctree-l3"><a class="reference internal" href="#read-the-plot-names-of-the-created-images">Read the plot names of the created images</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#read-an-image-plot">Read an image plot</a>
     </li>
@@ -151,26 +151,26 @@
 <p><code>POST CLUSTER_IP/api/learningOrchestra/v1/explore/pca</code></p>
 <p>The body contains the json fields:</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
-    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
-    &quot;label&quot;: &quot;dataset_label_column&quot;
+    &quot;inputDatasetName&quot;: &quot;used dataset name&quot;,
+    &quot;outputPlotName&quot;: &quot;result image plot name&quot;,
+    &quot;label&quot;: &quot;dataset label column&quot;
 }
 </code></pre>
 <p>The <code>label</code> is the label name column for machine learning datasets which has labeled tuples. In the case that the dataset used doesn't contain labeled tuples, define the value as null type in JSON:</p>
 <pre><code class="language-json">{
-    &quot;input_filename&quot;: &quot;used_dataset_filename&quot;,
-    &quot;output_filename&quot;: &quot;result_image_plot_filename&quot;,
+    &quot;inputDatasetName&quot;: &quot;used dataset name&quot;,
+    &quot;outputPlotName&quot;: &quot;result image plot name&quot;,
     &quot;label&quot;: null
 }
 </code></pre>
-<h2 id="read-the-filenames-of-the-created-images">Read the filenames of the created images</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
-<p>Returns a list with all created image plot filenames.</p>
+<h2 id="read-the-plot-names-of-the-created-images">Read the plot names of the created images</h2>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca</code></p>
+<p>Returns a list with all created image plot names.</p>
 <h2 id="read-an-image-plot">Read an image plot</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
-<p>Returns the image plot of <code>filename</code> specified.</p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;plotName&gt;</code></p>
+<p>Returns the image plot of <code>plotName</code> specified.</p>
 <h2 id="delete-an-image-plot">Delete an image plot</h2>
-<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;filename&gt;</code></p>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/explore/pca/&lt;plotName&gt;</code></p>
 <p>Deletes an image plot from the database.</p>
 <h3 id="images-plot-examples">Images plot examples</h3>
 <p>This examples use the <a href="https://www.kaggle.com/c/titanic/overview">titanic challengue datasets</a>.</p>

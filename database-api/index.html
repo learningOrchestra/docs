@@ -139,21 +139,21 @@
             <div class="section">
               
                 <h1 id="apilearningorchestrav1dataset">/api/learningOrchestra/v1/dataset</h1>
-<p>The <strong>dataset</strong> resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the filename field contained in the JSON file.</p>
+<p>The <strong>dataset</strong> resource is used to manages datasets, datasets are downloaded in CSV format and parsed into JSON format where the primary key for each document is the datasetName field contained in the JSON file.</p>
 <h2 id="downloads-dataset-from-url">Downloads dataset from URL</h2>
 <p><code>POST CLUSTER_IP/api/learningOrchestra/v1/dataset</code></p>
 <p>Insert a CSV into the database using the POST method, JSON must be contained in the body of the HTTP request.
 The following fields are required: </p>
 <pre><code class="language-json">{
-    &quot;filename&quot;: &quot;key_to_dataset_identification&quot;,
+    &quot;datasetName&quot;: &quot;key to dataset identification&quot;,
     &quot;url&quot;: &quot;http://sitetojson.file/path/to/csv&quot;
 }
 </code></pre>
 <h2 id="list-dataset-content">List dataset content</h2>
-<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;filename&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
+<p><code>GET CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;datasetName&gt;?skip=number&amp;limit=number&amp;query={}</code></p>
 <p>Returns rows of the dataset requested, with pagination.</p>
 <ul>
-<li><code>filename</code> - Name of file requests</li>
+<li><code>datasetName</code> - Name of file requests</li>
 <li><code>skip</code> - Amount of lines to skip in the CSV file</li>
 <li><code>limit</code> - Limit the query result, maximum limit set to 20 rows</li>
 <li><code>query</code> - Query to find documents, if only pagination is requested, <code>query</code> should be empty curly brackets <code>query={}</code></li>
@@ -178,24 +178,24 @@ The following fields are required: </p>
         &quot;Cabin&quot;,
         &quot;Embarked&quot;
     ],
-    &quot;filename&quot;: &quot;titanic_training&quot;,
+    &quot;datasetName&quot;: &quot;titanicTraining&quot;,
     &quot;finished&quot;: true,
     &quot;type&quot;: &quot;dataset&quot;,
-    &quot;time_created&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
+    &quot;timeCreated&quot;: &quot;2020-07-28T22:16:10-00:00&quot;,
     &quot;url&quot;: &quot;https://filebin.net/rpfdy8clm5984a4c/titanic_training.csv?t=gcnjz1yo&quot;
 }
 </code></pre>
 <ul>
 <li><code>fields</code> - Names of the columns in the file</li>
-<li><code>filename</code> - Name of the file</li>
+<li><code>datasetName</code> - Name of the file</li>
 <li><code>finished</code> - Flag used to indicate if asynchronous processing from file downloader is finished</li>
 <li><code>type</code> - The type of file</li>
-<li><code>time_created</code> - Time of creation</li>
+<li><code>timeCreated</code> - Time of creation</li>
 <li><code>url</code> - URL used to download the file</li>
 </ul>
 <h2 id="delete-a-dataset">Delete a dataset</h2>
-<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;filename&gt;</code></p>
-<p>Request of type <code>DELETE</code>, passing the <code>filename</code> field of an existing dataset in the request parameters, deleting the dataset in the database.</p>
+<p><code>DELETE CLUSTER_IP/api/learningOrchestra/v1/dataset/&lt;datasetName&gt;</code></p>
+<p>Request of type <code>DELETE</code>, passing the <code>datasetName</code> field of an existing dataset in the request parameters, deleting the dataset in the database.</p>
               
             </div>
           </div>
