@@ -12,7 +12,7 @@ The following fields are required:
 ```json
 {
     "datasetName": "key to dataset identification",
-    "url": "http://sitetojson.file/path/to/csv"
+    "datasetURI": "http://sitetojson.file/path/to/csv"
 }
 ```
 
