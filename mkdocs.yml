@@ -2,18 +2,8 @@ site_name: learningOrchestra Docs
 nav:
   - Home: index.md
   - Installation: installation.md
-  - Usage: usage.md
-  - API v1 Guide:
-      - Dataset: database-api.md
-      - Transform:
-        - Projection: projection-api.md
-        - Data Type: datatype-api.md
-      - Explore:
-        - Histogram: histogram-api.md
-        - t-SNE: t-sne-api.md
-        - PCA: pca-api.md
-      - Builder: modelbuilder-api.md
-  - Python Client: python-apis.md
+  - API v1 Guide: open-api.md
+  - Clients: clients.md
 theme:
   name: readthedocs
   features:

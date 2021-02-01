@@ -1,0 +1,1 @@
+The learningOrchestra REST API was built under openapi 3.0, you can read the API specification in this [link](https://app.swaggerhub.com/apis-docs/learningOrchestra/learningOrchestra/v1.0)

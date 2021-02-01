@@ -38,3 +38,16 @@ That's it! learningOrchestra has been deployed in your swarm cluster!
 `CLUSTER_IP:8080` - To visualize spark cluster state.
 
 * `CLUSTER_IP` *is the external IP of a machine in your cluster.*
+
+## Spark Microservices
+
+Some learningOrchestra features use the Spark microservice to work.
+
+By default, this microservice has only one instance. In case your data processing requires computing power, you need scale this microservice.
+
+To do this, with learningOrchestra already deployed, run the following in the manager machine of your Docker swarm cluster:
+
+`docker service scale microservice_sparkworker=NUMBER_OF_INSTANCES`
+
+*\** `NUMBER_OF_INSTANCES` *is the number of Spark microservice instances which you require. Choose it according to your cluster resources and your resource requirements.*
+
